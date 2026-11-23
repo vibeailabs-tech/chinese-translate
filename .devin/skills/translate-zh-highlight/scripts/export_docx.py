@@ -95,7 +95,7 @@ def export(data, output):
     for node in list(body): body.remove(node)
     opening = [
         [{'text': '简体中文读本'}], data['title'], data['subtitle'],
-        [{'text': '标记说明：黄色标出专有名称；英文专名保留原文。'}],
+        [{'text': '标记说明：黄色标出专有名称；独特英文名保留原文。'}],
     ]
     for pattern, segments in zip(patterns[:4], opening): body.append(paragraph(pattern, segments, True))
     for segments in data['paragraphs']: body.append(paragraph(patterns[4], segments, body=True))

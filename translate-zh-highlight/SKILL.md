@@ -1,6 +1,6 @@
 ---
 name: translate-zh-highlight
-description: Translate prose into Simplified Chinese and export a Word document in the bundled document layout with proper names highlighted yellow, English proper names preserved, Hiragino Sans GB 13 pt, and one-inch margins. Use for translation documents with these formatting requirements, not vocabulary lessons or stories.
+description: Translate prose into Simplified Chinese and export a Word document in the bundled document layout with proper names highlighted yellow, places and countries in Chinese, distinctive English names preserved, Hiragino Sans GB 13 pt, and one-inch margins. Use for translation documents with these formatting requirements, not vocabulary lessons or stories.
 ---
 
 # Translate to Simplified Chinese
@@ -11,8 +11,9 @@ Every output must use the bundled [document template](assets/document-template/w
 
 - Translate faithfully into natural Simplified Chinese. Preserve meaning, tone, paragraph order, numbers, dates, and units; do not summarize or add facts.
 - Identify proper names in context: people, places, organizations, brands, and named institutions or events. Capitalization alone does not establish a proper name (Apple the company versus an apple).
-- Preserve English proper names exactly, including capitalization, spelling, and internal punctuation, even when a conventional Chinese translation exists: `New York` stays `New York`.
-- Default for Vietnamese names: preserve personal names with diacritics; translate places with a well-established Chinese name (`Hà Nội` → `河内`). For other non-English names, use a confidently known conventional Chinese form; otherwise preserve the original rather than inventing a transliteration. User glossaries override these defaults.
+- Translate places, countries, regions, streets, and landmarks into a conventional Simplified Chinese form when one is confidently known (`New York` → `纽约`, `US` / `United States` / `America` → `美国`, `China` → `中国`, `Hà Nội` → `河内`). Otherwise preserve the original rather than inventing a transliteration.
+- Preserve distinctive English proper names exactly, including capitalization, spelling, and internal punctuation: brands, English personal names, products, and titles whose public identity is the English string (`McDonald's`, `John Smith`).
+- For other non-English personal names, use a confidently known conventional Chinese form; preserve Vietnamese personal names with diacritics (`Nguyễn Văn An`). User glossaries override these defaults.
 - Build a small internal name mapping before translating and use it consistently. If a material ambiguity cannot be resolved from context, ask a focused question; otherwise preserve the uncertain name and briefly mention uncertainty outside the document.
 - Highlight every proper-name occurrence in the final translation with yellow background, including preserved names. Highlight the name span only, excluding surrounding whitespace, punctuation, titles, or generic nouns unless they belong to the name. Do not highlight pronouns or generic references merely because they refer to a named entity.
 
@@ -46,7 +47,7 @@ Create UTF-8 JSON in a temporary working directory. The required `title` and `su
     [
       {"text": "John Smith", "highlight": true},
       {"text": "在"},
-      {"text": "河内", "highlight": true},
+      {"text": "纽约", "highlight": true},
       {"text": "与"},
       {"text": "Nguyễn Văn An", "highlight": true},
       {"text": "会面。"}

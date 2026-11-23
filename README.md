@@ -4,7 +4,7 @@ An AI agent skill that translates prose into **Simplified Chinese** and exports 
 
 Works with agents that support the `SKILL.md` format, such as [Devin](https://devin.ai), Claude Code, and OpenAI Codex.
 
-> Tiếng Việt: Skill dịch văn bản sang tiếng Trung giản thể và xuất ra file Word đã định dạng sẵn. Tất cả tên riêng được tô vàng, tên tiếng Anh giữ nguyên.
+> Tiếng Việt: Skill dịch văn bản sang tiếng Trung giản thể và xuất ra file Word đã định dạng sẵn. Tất cả tên riêng được tô vàng; địa danh và quốc gia dịch sang tiếng Trung, tên tiếng Anh đặc trưng giữ nguyên.
 
 ---
 
@@ -13,8 +13,9 @@ Works with agents that support the `SKILL.md` format, such as [Devin](https://de
 - **Faithful translation**: keeps meaning, tone, paragraph order, numbers, dates, and units. No summarizing and no added facts.
 - **Proper-name handling**
   - Proper names are identified from context (people, places, organizations, brands, events), not just from capital letters.
-  - English proper names stay exactly as written (`New York` stays `New York`).
-  - Vietnamese personal names keep their diacritics (`Nguyễn Văn An`). Places with a well-established Chinese name are translated (`Hà Nội` → `河内`).
+  - Places, countries, regions, streets, and landmarks use a conventional Chinese form (`New York` → `纽约`, `US` → `美国`, `Hà Nội` → `河内`).
+  - Distinctive English names stay exactly as written: brands, English personal names, products, and English titles (`McDonald's`, `John Smith`).
+  - Vietnamese personal names keep their diacritics (`Nguyễn Văn An`).
   - Each name is translated the same way every time. A glossary you provide overrides these defaults.
 - **Yellow highlighting** on every proper-name occurrence, including in the title, the subtitle, and the running header.
 - **Consistent Word layout** taken from a bundled template:
@@ -29,11 +30,11 @@ Works with agents that support the `SKILL.md` format, such as [Devin](https://de
 
 Input:
 
-> John Smith met Nguyễn Văn An in Hà Nội.
+> John Smith met Nguyễn Văn An in New York.
 
 Output document body (highlighted segments shown in **bold** here):
 
-> **John Smith**在**河内**与**Nguyễn Văn An**会面。
+> **John Smith**在**纽约**与**Nguyễn Văn An**会面。
 
 ---
 
@@ -124,7 +125,7 @@ Each segment is `{"text": "...", "highlight": true|false}`. `highlight` is optio
     [
       {"text": "John Smith", "highlight": true},
       {"text": "在"},
-      {"text": "河内", "highlight": true},
+      {"text": "纽约", "highlight": true},
       {"text": "与"},
       {"text": "Nguyễn Văn An", "highlight": true},
       {"text": "会面。"}
